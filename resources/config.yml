@@ -1,0 +1,7 @@
+# /!\ This plugin only work with BedrockEconomy
+
+# configure here the prefix
+prefix: "§b[§cAtm§b]"
+
+# amount to add for each minut
+value: 10
