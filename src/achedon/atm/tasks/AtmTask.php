@@ -18,7 +18,6 @@ class AtmTask extends Task{
             if($player->isConnected()){
                 if(isset(self::$cache[$player->getXuid()])){
                     self::$cache[$player->getXuid()]++;
-                    var_dump(self::$cache);
                 }else{
                     AtmTask::$cache[$player->getXuid()] = 0;
                 }
