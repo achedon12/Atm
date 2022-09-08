@@ -24,9 +24,7 @@ class Atm extends PluginBase{
 
         self::$value = (int)self::config()->get("value");
         self::$prefix = self::config()->get("prefix")." §r";
-
-        $this->getLogger()->info("§2Atm enable");
-
+        
         $this->getServer()->getCommandMap()->register('commands',new AtmCommand());
 
         $this->getScheduler()->scheduleRepeatingTask(new AtmTask(),20);
@@ -37,9 +35,9 @@ class Atm extends PluginBase{
         }
     }
 
-    protected function onDisable(): void
+    protected function onLoad(): void
     {
-        $this->getLogger()->info("§4Atm disable");
+        self::setInstance($this);
     }
 
     private function config(): Config{
