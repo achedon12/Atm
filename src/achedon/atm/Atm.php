@@ -2,14 +2,16 @@
 
 namespace achedon\atm;
 
-use achedon\atm\commands\Atm;
+use achedon\atm\commands\AtmCommand;
 use achedon\atm\tasks\AtmTask;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
+use pocketmine\utils\SingletonTrait;
 
-class Main extends PluginBase{
+class Atm extends PluginBase{
 
-    private static Main $instance;
+    use SingletonTrait;
+
     public static int $value;
     public static string $prefix;
 
@@ -25,7 +27,7 @@ class Main extends PluginBase{
 
         $this->getLogger()->info("§2Atm enable");
 
-        $this->getServer()->getCommandMap()->registerAll('commands',[new Atm()]);
+        $this->getServer()->getCommandMap()->register('commands',new AtmCommand());
 
         $this->getScheduler()->scheduleRepeatingTask(new AtmTask(),20);
 
@@ -40,11 +42,7 @@ class Main extends PluginBase{
         $this->getLogger()->info("§4Atm disable");
     }
 
-    public static function getInstance(): self{
-        return self::$instance;
-    }
-
-    public static function config(): Config{
+    private function config(): Config{
         return new Config(self::$instance->getDataFolder()."config.yml",Config::YAML);
     }
 
