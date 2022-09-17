@@ -25,7 +25,7 @@ class Atm extends PluginBase{
         self::$value = (int)self::config()->get("value");
         self::$prefix = self::config()->get("prefix")." §r";
         
-        $this->getServer()->getCommandMap()->register('commands',new AtmCommand());
+        $this->getServer()->getCommandMap()->register('atm',new AtmCommand());
 
         $this->getScheduler()->scheduleRepeatingTask(new AtmTask(),20);
 

@@ -10,9 +10,11 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\lang\Translatable;
 use pocketmine\player\Player;
+use pocketmine\plugin\Plugin;
+use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\SingletonTrait;
 
-class AtmCommand extends Command{
+class AtmCommand extends Command implements PluginOwned {
 
     use SingletonTrait;
 
@@ -37,5 +39,10 @@ class AtmCommand extends Command{
             $sender->sendMessage(Atm::$prefix."You have win {$amount}");
             BedrockEconomyAPI::legacy()->addToPlayerBalance($sender->getName(),$amount);
         }
+    }
+
+    public function getOwningPlugin(): Plugin
+    {
+        return Atm::getInstance();
     }
 }
