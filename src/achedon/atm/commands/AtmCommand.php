@@ -36,7 +36,7 @@ class AtmCommand extends Command implements PluginOwned {
             }
             AtmTask::$cache[$sender->getXuid()] -= round($value);
             $amount = round($value) * Atm::$value;
-            $sender->sendMessage(Atm::$prefix."You have win {$amount}");
+            $sender->sendMessage(Atm::$prefix."You have won {$amount}");
             BedrockEconomyAPI::legacy()->addToPlayerBalance($sender->getName(),$amount);
         }
     }
