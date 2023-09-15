@@ -18,6 +18,10 @@
 
 > [FR] Vous pouvez configurez entierement le plugin
 
+-----------------
+## ChangeLog
+
+- update to pm5
 
 -----------------
 
